@@ -34,7 +34,7 @@ FEATURE_LABELS = {
     "无创通气": "Non-invasive ventilation",
     "雾化激素": "Nebulized corticosteroid use",
     "静脉激素": "Intravenous corticosteroid use",
-    "肺结核": "Tuberculosis",
+    "肺结核": "PTB",
     "年龄": "Age (years)",
     "住院天数": "Length of hospital stay (days)",
     "入院时_mMRC分级": "mMRC grade on admission",
@@ -163,7 +163,7 @@ with st.form("prediction_form", clear_on_submit=False):
             "mMRC grade on admission", options=[0, 1, 2, 3, 4], index=2
         )
         tuberculosis = st.selectbox(
-            "Tuberculosis", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No"
+            "PTB", options=[0, 1], format_func=lambda x: "Yes" if x == 1 else "No"
         )
 
     with c2:
@@ -279,3 +279,4 @@ with st.expander("Technical model information", expanded=False):
     for i, feature in enumerate(EXPECTED_FEATURES, 1):
         st.write(f"{i}. {FEATURE_LABELS[feature]}")
     st.caption(f"Locked model SHA-256: {MODEL_HASH}")
+
